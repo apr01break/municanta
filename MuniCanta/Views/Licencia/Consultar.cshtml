@@ -1,0 +1,172 @@
+﻿@model ConsultaLicenciaMetodoViewModel
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_LayoutPrincipal";
+}
+    <br />
+    <div class="form-row">
+        <div class="col-md-5 mb-3">
+            <h3>Búsqueda de Licencia</h3>
+
+            <div class="card text-white" style="background-color: #563D7C !important;">
+                <div class="card-body">
+                    <ul class="nav nav-pills mb-3 nav-fill" id="pills-tab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Documento</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Nombre</a>
+                        </li>
+                    </ul>
+                    <div class="tab-content" id="pills-tabContent">
+                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                            <form asp-controller="Licencia" asp-action="Consultar">
+                                <input type="hidden" asp-for="ConsultaLicencia.TipoBusqueda" value="1" />
+                                <div class="form-group">
+                                    <label asp-for="ConsultaLicencia.TipoDocumento" class="text-blanco">Tipo de documento</label>
+                                    <select class="form-control" asp-for="ConsultaLicencia.TipoDocumento" asp-items="Model.ListaTiposDocumento">
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label asp-for="ConsultaLicencia.NumeroDocumento" class="text-blanco">N° de documento</label>
+                                    <input type="text" class="form-control" pattern=".{8,8}" title="Debe contener 8 dígitos" asp-for="ConsultaLicencia.NumeroDocumento" placeholder="Ingrese el N° de documento" required>
+                                </div>
+                                <button type="submit" class="btn btn-outline-light">Buscar &nbsp;<i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
+                        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+
+                            <form asp-controller="Licencia" asp-action="Consultar">
+                                <input type="hidden" asp-for="ConsultaLicencia.TipoBusqueda" value="2" />
+                                <div class="form-group">
+                                    <label asp-for="ConsultaLicencia.Nombres" class="text-blanco">Nombres</label>
+                                    <input type="text" class="form-control" asp-for="ConsultaLicencia.Nombres" placeholder="Ingrese los nombres" required>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label asp-for="ConsultaLicencia.ApellidoPaterno" class="text-blanco">Apellido Paterno</label>
+                                        <input type="text" class="form-control" asp-for="ConsultaLicencia.ApellidoPaterno" placeholder="Apellido paterno" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label asp-for="ConsultaLicencia.ApellidoMaterno" class="text-blanco">Apellido Materno</label>
+                                        <input type="text" class="form-control" asp-for="ConsultaLicencia.ApellidoMaterno" placeholder="Apellido materno" required>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-outline-light">Buscar &nbsp;<i class="fa fa-search"></i></button>
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        @*<div class="col-md-1 mb-3">
+        </div>*@
+        @if (Model.ControlBusqueda == 1)
+        {
+            <div class="col-md-7 mb-3">
+                <h3>&nbsp;</h3>
+                @if (Model.PersonaLicencia == null)
+                {
+                    <div class="card border-primary mb-3">
+                        <div class="card-header border-primary bg-primary text-white text-center">RESULTADO</div>
+                        <div class="card-body text-primary">
+
+                            <p class="card-text">No se encontró licencia registrada.</p>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="card border-primary mb-3">
+                        <div class="card-header border-primary bg-primary text-white text-center">RESULTADO</div>
+                        <div class="card-body text-primary">
+                            <div class="form-group row" style="margin-bottom: 0.3rem">
+                                <label class="col-sm-4 text-bold">Nombres</label>
+                                <div class="col-sm-8">
+                                    <label>@Model.PersonaLicencia.Persona.Nombres</label>
+                                </div>
+                            </div>
+                            <div class="form-group row" style="margin-bottom: 0.3rem">
+                                <label class="col-sm-4 text-bold">Apellidos</label>
+                                <div class="col-sm-8">
+                                    <label>@Model.PersonaLicencia.Persona.ApellidoPaterno @Model.PersonaLicencia.Persona.ApellidoMaterno</label>
+                                </div>
+                            </div>
+                            <div class="form-group row" style="margin-bottom: 0.3rem">
+                                <label class="col-sm-4 text-bold">N° de licencia</label>
+                                <div class="col-sm-8">
+                                    <label>@Model.PersonaLicencia.CodigoLicencia</label>
+                                </div>
+                            </div>
+                            <div class="form-group row" style="margin-bottom: 0.3rem">
+                                <label class="col-sm-4 text-bold">Fecha expedición</label>
+                                <div class="col-sm-8">
+                                    <label>@Model.PersonaLicencia.FechaInicio.ToShortDateString()</label>
+                                </div>
+                            </div>
+                            <div class="form-group row" style="margin-bottom: 0.3rem">
+                                <label class="col-sm-4 text-bold">Fecha vencimiento</label>
+                                <div class="col-sm-8">
+                                    <label>@Model.PersonaLicencia.FechaFin.ToShortDateString()</label>
+                                </div>
+                            </div>
+                            <div class="form-group row" style="margin-bottom: 0rem">
+                                <label class="col-sm-4 text-bold">Estado</label>
+                                <div class="col-sm-8">
+                                    @if (Model.PersonaLicencia.FechaFin > DateTime.Now.Date)
+                                    {
+                                        <label>Vigente</label>
+                                    }
+                                    else
+                                    {
+                                        <label>Vencido</label>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        }
+
+    </div>
+
+@section Scripts{
+    <script>
+        
+        var id_persona;
+        var nombre_persona;
+        var tipo_documento_persona;
+        var numero_documento_persona;
+        $('#ConsultaLicencia_TipoDocumento').on('change', function () {
+            if ($(this).val() == "1") {
+                console.log("111")
+                $('#ConsultaLicencia_TipoDocumento').attr("pattern", ".{8,8}");
+                $('#ConsultaLicencia_TipoDocumento').attr("title", "Debe contener 8 dígitos");
+            } else {
+                console.log("222")
+                $('#ConsultaLicencia_TipoDocumento').attr("pattern", ".{11,11}");
+                $('#ConsultaLicencia_TipoDocumento').attr("title", "Debe contener 11 dígitos");
+            }
+        });
+        $('.tab tr').on('click', function () {
+            $(this).toggleClass("clicked").siblings().removeClass("clicked");
+            if ($(this).hasClass("clicked")) {
+                id_persona = $(this).attr("data-idpersona");
+                nombre_persona = $(this).attr("data-nombre");
+                tipo_documento_persona = $(this).attr("data-tipodocumento");
+                numero_documento_persona = $(this).attr("data-numerodocumento");
+            }
+            else {
+                id_persona = null;
+                nombre_persona = null;
+                tipo_documento_persona = null;
+                numero_documento_persona = null;
+            }
+        });              
+
+    </script>
+}

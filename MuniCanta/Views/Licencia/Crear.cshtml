@@ -1,0 +1,203 @@
+﻿@model PersonaLicencia
+@{
+    ViewData["Title"] = "Municipalidad de Canta";
+    Layout = "_LayoutPrincipal";
+}
+<br />
+
+<h3>Registro de Licencia</h3>
+<div class="card">
+    <div class="card-body">
+        <h5>PERSONA</h5>
+        <form asp-controller="Licencia" asp-action="Crear">
+            <div class="form-row">
+                <div class="col-md-10 mb-3">
+                    <label for="validationServer01">Nombre de persona</label>
+                    <select class="form-control select2" id="" asp-for="@Model.IdPersona" asp-items="@(SelectList)ViewBag.ListaPersonas">
+                        <option value="" disabled selected>-- Seleccione una persona --</option>
+                    </select>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <label for="validationServer02">&nbsp;</label>
+                    <button class="btn btn-success form-control" type="submit" data-toggle="modal" data-target="#modal_crear_persona">Registrar &nbsp;<i class="fa fa-plus"></i></button>
+                </div>
+            </div>
+            <hr />
+            <h5>DATOS DE LICENCIA</h5>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="">Código Licencia</label>
+                    <input type="text" class="form-control" asp-for="@Model.CodigoLicencia" placeholder="Ingrese el código de licencia" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="">Fecha de renovación</label>
+                    <input type="date" class="form-control" asp-for="@Model.FechaRenovacion" placeholder="Ingrese la fecha de renovación" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6 mb-3">
+                    <label for="">Fecha de inicio</label>
+                    <input type="date" class="form-control" asp-for="@Model.FechaInicio" required>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="">Fecha de fin</label>
+                    <input type="date" class="form-control" asp-for="@Model.FechaFin" required>
+                </div>
+            </div>
+            <hr />
+            <button class="btn btn-success" type="submit">GUARDAR &nbsp;<i class="fa fa-save"></i></button>
+        </form>
+    </div>
+</div>  
+
+<div class="modal fade" id="modal_personas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Elegir persona</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body no-padding" style="padding: 0px !important">
+                <div class="table-responsive">
+                    <table class="table tab table-hover" style="margin: 0px !important">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nombres</th>
+                                <th scope="col">Apellido Paterno</th>
+                                <th scope="col">Apellido Materno</th>
+                                <th scope="col">Tipo Doc.</th>
+                                <th scope="col">N° Doc.</th>
+                                <th scope="col"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @*@foreach (var item in Model)
+                                {
+                                    <tr data-idpersona="@item.IdPersona"
+                                        data-nombre="@item.Nombres @item.ApellidoPaterno @item.ApellidoMaterno"
+                                        data-tipodocumento="@item.DescripcionTipoDocumento"
+                                        data-numerodocumento="@item.NumeroDocumento">
+                                        <td>@item.Nombres</td>
+                                        <td>@item.ApellidoPaterno</td>
+                                        <td>@item.ApellidoMaterno</td>
+                                        <td>@item.IdTipoDocumento</td>
+                                        <td>@item.NumeroDocumento</td>
+                                        <td><i class="fa fa-angle-right" aria-hidden="true"></i></td>
+                                    </tr>
+                                }*@
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-success" id="aceptar_persona">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modal_crear_persona" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <form asp-controller="Persona" asp-action="Crear">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Registrar persona</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="validationServer01">Nombres</label>
+                            <input type="text" class="form-control" name="Nombres" placeholder="Ingrese el nombre" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="validationServer02">Apellido Paterno</label>
+                            <input type="text" class="form-control" name="ApellidoPaterno" placeholder="Ingrese el apellido paterno" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="validationServer02">Apellido Materno</label>
+                            <input type="text" class="form-control" name="ApellidoMaterno" placeholder="Ingrese el apellido materno" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="validationServer02">Tipo de Documento</label>
+                            <select class="form-control" required name="IdTipoDocumento" asp-items="@(SelectList)ViewBag.ListaTipoDocumento">
+                                <option value="" disabled selected>-- Seleccione --</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="validationServer02">N° de documento</label>
+                            <input type="text" class="form-control" name="NumeroDocumento" placeholder="Ingrese el N° de documento" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="validationServer02">Dirección</label>
+                            <input type="text" class="form-control" name="Direccion" placeholder="Ingrese la dirección" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="toast" id="myToast">
+    <div class="toast-header">
+        <strong class="mr-auto"><i class="fa fa-grav"></i> We miss you!</strong>
+        <small>11 mins ago</small>
+        <button type="button" class="ml-2 mb-1 close" data-dismiss="toast">&times;</button>
+    </div>
+    <div class="toast-body">
+        It's been a long time since you visited us. We've something special for you. <a href="#">Click here!</a>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        var id_persona;
+        var nombre_persona;
+        var tipo_documento_persona;
+        var numero_documento_persona;
+        $('.tab tr').on('click', function () {
+            $(this).toggleClass("clicked").siblings().removeClass("clicked");
+            if ($(this).hasClass("clicked")) {
+                id_persona = $(this).attr("data-idpersona");
+                nombre_persona = $(this).attr("data-nombre");
+                tipo_documento_persona = $(this).attr("data-tipodocumento");
+                numero_documento_persona = $(this).attr("data-numerodocumento");
+            }
+            else {
+                id_persona = null;
+                nombre_persona = null;
+                tipo_documento_persona = null;
+                numero_documento_persona = null;
+            }
+        });
+        var tipo = '@ViewBag.TipoMensaje';
+        if (tipo == 'error') {
+            toastr.error('@ViewBag.Mensaje');
+        }
+        else if (tipo == 'success') {
+            toastr.success('@ViewBag.Mensaje');
+        }
+        $('#aceptar_persona').on('click', function () {
+            if (id_persona != null) {
+                $('#modal_personas').modal('hide');
+            }
+        });
+
+    </script>
+}

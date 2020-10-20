@@ -1,0 +1,57 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_LayoutPrincipal";
+}
+<br />
+<h3 class="full-width">
+    <div class="wrap">REGISTRO DE LICENCIA</div>
+</h3>
+<hr />
+<div class=" bg-info">
+
+</div>
+<h5>PERSONA</h5>
+<div class="form-row">
+    <div class="col-md-6 mb-3">
+        <label for="validationServer01">Nombre de persona</label>
+        <input type="text" class="form-control" id="validationServer01" placeholder="" readonly>
+    </div>
+    <div class="col-md-2 mb-3">
+        <label for="validationServer02">Tipo de documento</label>
+        <input type="text" class="form-control" id="validationServer02" placeholder="" readonly>
+    </div>
+    <div class="col-md-2 mb-3">
+        <label for="validationServer02">N° de documento</label>
+        <input type="text" class="form-control" id="validationServer02" placeholder="" readonly>
+    </div>
+    <div class="col-md-2 mb-3">
+        <label for="validationServer02">&nbsp;</label>
+        <button class="btn btn-success form-control" type="submit">Buscar &nbsp;<i class="fa fa-search"></i></button>
+    </div>
+</div>
+<hr />
+<h5>DATOS DE LICENCIA</h5>
+<form>
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label for="validationServer01">Código Licencia</label>
+            <input type="text" class="form-control" id="validationServer01" placeholder="Ingrese el código de licencia" required>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="validationServer02">Fecha de renovación</label>
+            <input type="text" class="form-control" id="validationServer02" placeholder="Ingrese la fecha de renovación" required>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-6 mb-3">
+            <label for="validationServer03">Fecha de inicio</label>
+            <input type="date" class="form-control" id="validationServer03" required>
+        </div>
+        <div class="col-md-6 mb-3">
+            <label for="validationServer03">Fecha de inicio</label>
+            <input type="date" class="form-control" id="validationServer03" required>
+        </div>
+    </div>
+    <hr />
+    <button class="btn btn-primary" type="submit">GUARDAR &nbsp;<i class="fa fa-save"></i></button>
+</form>

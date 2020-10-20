@@ -1,0 +1,49 @@
+﻿@model Usuario
+@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_LayoutLogin";
+}
+<div class="container-login100">
+    <div class="wrap-login100">
+        <form class="login100-form validate-form" asp-controller="Usuario" asp-action="Login">
+            <span class="login100-form-title p-b-10">
+                Iniciar Sesión
+            </span>
+            <span class="texto-rojo">
+                @ViewData["Message"]
+            </span>
+            <br />
+            <br />
+
+            <div class="wrap-input100 validate-input" data-validate="Ingrese usuario válido">
+                <input class="input100" type="text" asp-for="@Model.CodigoUsuario">
+                <span class="focus-input100" data-placeholder="Usuario"></span>
+            </div>
+
+            <div class="wrap-input100 validate-input" data-validate="Ingrese contraseña">
+                <span class="btn-show-pass">
+                    <i class="zmdi zmdi-eye"></i>
+                </span>
+                <input class="input100" type="password" asp-for="@Model.Password">
+                <span class="focus-input100" data-placeholder="Contraseña"></span>
+            </div>
+
+            <div class="container-login100-form-btn">
+                <div class="wrap-login100-form-btn">
+                    <div class="login100-form-bgbtn"></div>
+                    <button class="login100-form-btn" type="submit">
+                        Continuar
+                    </button>
+                </div>
+            </div>
+            <br />
+        </form>
+    </div>
+</div>
+@section Scripts {
+    <script>
+        if ('@ViewData["Message"]' != '') {
+            document.getElementById("CodigoUsuario").focus();
+        }
+    </script>
+}

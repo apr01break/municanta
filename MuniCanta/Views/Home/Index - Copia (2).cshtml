@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    Layout = "_LayoutLimpio";
+}
+    <div>
+        <br />
+        <br />
+        <div class="row">
+            <form class="col s12">
+                <div class="row card-panel purple lighten-3">
+                    <div class="input-field cabeza col s6">
+                        <span style="font-weight:bold; color:#9C27B0">Alonso Pumachagua Rosales</span>
+                    </div>
+                    <div class="input-field cabeza col s2">
+                        <span style="font-weight:bold; color:#9C27B0">DNI</span>
+                    </div>
+                    <div class="input-field cabeza col s3">
+                        <span style="font-weight:bold; color:#9C27B0">74858962</span>
+                    </div>
+                    <div class="input-field col s1">
+                        <a class="btn-floating btn-sm waves-effect waves-light purple tooltipped" data-position="bottom" data-tooltip="Buscar persona"><i class="material-icons">search</i></a>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input placeholder="Ingrese el código de licencia" id="first_name" type="text" class="validate">
+                        <label for="first_name">Código de Licencia</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="email" type="date" class="validate">
+                        <label for="email">Fecha de renovación</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input placeholder="Placeholder" id="first_name" type="date" class="validate">
+                        <label for="first_name">Fecha de inicio</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input id="last_name" type="date" class="validate">
+                        <label for="last_name">Fecha fin</label>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <button class="btn waves-effect waves-light" type="submit" name="action">
+                        Guardar
+                        <i class="material-icons right">save</i>
+                    </button>
+                </div>
+            </form>
+
+        </div>
+    </div>

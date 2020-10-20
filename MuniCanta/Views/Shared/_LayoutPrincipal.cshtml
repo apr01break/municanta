@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>@ViewData["Title"] - MuniCanta</title>
+    <!-- Compiled and minified CSS -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/toastr/toastr.min.css">
+    @*<link rel="stylesheet" href="~/tab/style.css">*@
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
+
+    <style>
+        .container{
+            padding-left: 55px !important;
+            padding-right: 55px !important;
+        }
+        .border-primary {
+            border-color: #563D7C !important;
+        }
+        .text-primary {
+            color: #563D7C !important;
+        }
+        .bg-primary {
+            background-color: #563D7C !important;
+        }
+        h3{
+            color: #563D7C;
+        }
+        .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+            background-color: #563D7C !important;
+        }
+        .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+            color: #563D7C;
+        }
+        a{
+            color: #FFFFFF;
+        }
+        .text-bold{
+            font-weight:bold;
+        }
+        .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+            background-color: #FFFFFF !important;
+        }
+        .btn-morado{
+            background-color: #563D7C;
+            border-color: #563D7C;
+            color: white
+        }
+        header, .full-width {
+            width: 100%;
+            background: #ccc;
+        }
+
+        .wrap {
+            width: 100%;
+            margin: 0 auto;
+            padding: 0.25em 0.625em;
+            background: #563D7C;
+            color: white;
+            text-align: center
+        }
+        /* label color */
+        .input-field label {
+            color: #000;
+        }
+
+        .cabeza input {
+            color: #FFFFFF !important;
+            font-weight: bold;
+        }
+
+        .cabeza label {
+            color: #FFFFFF !important;
+        }
+        /* label focus color */
+        .selector-for-some-widget {
+            box-sizing: content-box;
+        }
+
+        th {
+            background-color: #28a745;
+            color: white;
+        }
+
+        tr.clicked {
+            background-color: #C3E6CB !important;
+        }
+
+        .select2-container--default .select2-selection--single {
+            height: 38px !important;
+            padding: 6px 12px;
+            font-size: 1rem;
+            line-height: 1.33;
+            border-radius: 6px;
+        }
+
+            .select2-container--default .select2-selection--single .select2-selection__arrow b {
+                top: 85% !important;
+            }
+
+            .select2-container--default .select2-selection--single .select2-selection__rendered {
+                line-height: 26px !important;
+            }
+
+        .select2-container--default .select2-selection--single {
+            border: 1px solid #CCC !important;
+            box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.075) inset;
+            transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
+        }
+
+        .select2 {
+            width: 100% !important;
+        }
+
+        .modal-header {
+            padding: 13px 15px;
+            border-bottom: 1px solid #eee;
+            background-color: #0480be;
+            -webkit-border-top-left-radius: 4px;
+            -webkit-border-top-right-radius: 4px;
+            -moz-border-radius-topleft: 4px;
+            -moz-border-radius-topright: 4px;
+            border-top-left-radius: 4px;
+            border-top-right-radius: 4px;
+            color: white !important
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="~/jquery/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+    <script src="~/toastr/toastr.min.js"></script>
+    <script>
+        $('.select2').select2();
+    </script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

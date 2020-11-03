@@ -3,99 +3,158 @@
     ViewData["Title"] = "Municipalidad de Canta";
     Layout = "_LayoutPrincipal";
 }
-<br />
+<div class="container body-content">
+    <br />
 
-<h3>Registro de Licencia</h3>
-<div class="card">
-    <div class="card-body">
-        <h5>PERSONA</h5>
-        <form asp-controller="Licencia" asp-action="Crear">
-            <div class="form-row">
-                <div class="col-md-10 mb-3">
-                    <label for="validationServer01">Nombre de persona</label>
-                    <select class="form-control select2" id="" asp-for="@Model.IdPersona" asp-items="@(SelectList)ViewBag.ListaPersonas">
-                        <option value="" disabled selected>-- Seleccione una persona --</option>
-                    </select>
+    <h3>Registro de Licencia</h3>
+    <div class="card">
+        <div class="card-body">
+            <h5>PERSONA</h5>
+            <form id="frm_licencia" asp-controller="Licencia" asp-action="Crear">
+                <div class="form-row">
+                    <div class="col-md-10 mb-3">
+                        <label for="validationServer01">Nombre de persona</label>
+                        <select class="form-control select2" id="" asp-for="@Model.IdPersona" asp-items="@(SelectList)ViewBag.ListaPersonas">
+                            <option value="" disabled selected>-- Seleccione una persona --</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2 mb-3">
+                        <label for="validationServer02">&nbsp;</label>
+                        <button class="btn btn-success form-control" type="button" data-toggle="modal" data-target="#modal_crear_persona">Registrar &nbsp;<i class="fa fa-plus"></i></button>
+                    </div>
                 </div>
-                <div class="col-md-2 mb-3">
-                    <label for="validationServer02">&nbsp;</label>
-                    <button class="btn btn-success form-control" type="submit" data-toggle="modal" data-target="#modal_crear_persona">Registrar &nbsp;<i class="fa fa-plus"></i></button>
+                <hr />
+                <h5>DATOS DE LICENCIA</h5>
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label for="">Código Licencia</label>
+                        <input type="text" class="form-control" asp-for="@Model.CodigoLicencia" value="" placeholder="Ingrese el código de licencia" required>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="">Fecha de renovación</label>
+                        <input type="date" class="form-control" asp-for="@Model.FechaRenovacion" placeholder="Ingrese la fecha de renovación" required>
+                    </div>
                 </div>
-            </div>
-            <hr />
-            <h5>DATOS DE LICENCIA</h5>
-            <div class="form-row">
-                <div class="col-md-6 mb-3">
-                    <label for="">Código Licencia</label>
-                    <input type="text" class="form-control" asp-for="@Model.CodigoLicencia" placeholder="Ingrese el código de licencia" required>
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label for="">Fecha de expedición</label>
+                        <input type="date" class="form-control" asp-for="@Model.FechaInicio" required>
+                        <span id="val_fecha_inicio" asp-validation-for="@Model.FechaInicio" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="">Fecha de vencimiento</label>
+                        <input type="date" class="form-control" asp-for="@Model.FechaFin" required>
+                    </div>
                 </div>
-                <div class="col-md-6 mb-3">
-                    <label for="">Fecha de renovación</label>
-                    <input type="date" class="form-control" asp-for="@Model.FechaRenovacion" placeholder="Ingrese la fecha de renovación" required>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="col-md-6 mb-3">
-                    <label for="">Fecha de inicio</label>
-                    <input type="date" class="form-control" asp-for="@Model.FechaInicio" required>
-                </div>
-                <div class="col-md-6 mb-3">
-                    <label for="">Fecha de fin</label>
-                    <input type="date" class="form-control" asp-for="@Model.FechaFin" required>
-                </div>
-            </div>
-            <hr />
-            <button class="btn btn-success" type="submit">GUARDAR &nbsp;<i class="fa fa-save"></i></button>
-        </form>
-    </div>
-</div>  
-
-<div class="modal fade" id="modal_personas" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Elegir persona</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body no-padding" style="padding: 0px !important">
-                <div class="table-responsive">
-                    <table class="table tab table-hover" style="margin: 0px !important">
-                        <thead>
-                            <tr>
-                                <th scope="col">Nombres</th>
-                                <th scope="col">Apellido Paterno</th>
-                                <th scope="col">Apellido Materno</th>
-                                <th scope="col">Tipo Doc.</th>
-                                <th scope="col">N° Doc.</th>
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @*@foreach (var item in Model)
-                                {
-                                    <tr data-idpersona="@item.IdPersona"
-                                        data-nombre="@item.Nombres @item.ApellidoPaterno @item.ApellidoMaterno"
-                                        data-tipodocumento="@item.DescripcionTipoDocumento"
-                                        data-numerodocumento="@item.NumeroDocumento">
-                                        <td>@item.Nombres</td>
-                                        <td>@item.ApellidoPaterno</td>
-                                        <td>@item.ApellidoMaterno</td>
-                                        <td>@item.IdTipoDocumento</td>
-                                        <td>@item.NumeroDocumento</td>
-                                        <td><i class="fa fa-angle-right" aria-hidden="true"></i></td>
-                                    </tr>
-                                }*@
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-success" id="aceptar_persona">Aceptar</button>
-            </div>
+                <hr />
+                <button class="btn btn-success" type="submit">GUARDAR &nbsp;<i class="fa fa-save"></i></button>
+            </form>
         </div>
+    </div>
+</div>
+<div class="container" style="font-size:14.5px">
+    <hr />
+    <h3>Listado de Licencias</h3>
+    <table id="tbl_licencias" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Tipo Doc.</th>
+                <th>Nro. Doc.</th>
+                <th>Nro. Licencia</th>
+                <th>Fecha expedición</th>
+                <th>Fecha vencimiento</th>
+                <th>Fecha renovación</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in (ICollection<LicenciaPersonaViewModel>)ViewBag.Licencias)
+            {
+                <tr>
+                    <td>
+                        @item.Nombres @item.ApellidoPaterno @item.ApellidoMaterno
+                    </td>
+                    <td>@item.TipoDocumento</td>
+                    <td>@item.NumeroDocumento</td>
+                    <td>@item.CodigoLicencia</td>
+                    <td>@item.FechaInicio.ToShortDateString()</td>
+                    <td>@item.FechaFin.ToShortDateString()</td>
+                    <td>@item.FechaRenovacion.ToShortDateString()</td>
+                    <td>
+                        <button class="btn btn-success btn-sm editar_licencia"
+                                type="button"
+                                title="Editar"
+                                data-toggle="modal"
+                                data-target="#modal_editar_licencia"
+                                data-nombrepersona="@item.Nombres @item.ApellidoPaterno @item.ApellidoMaterno"
+                                data-idpersona="@item.IdPersona"
+                                data-idlicenciapersona="@item.IdLicenciaPersona"
+                                data-codigolicencia="@item.CodigoLicencia"
+                                data-fecharenovacion="@item.FechaRenovacion.ToString("yyyy-MM-dd")"
+                                data-fechainicio="@item.FechaInicio.ToString("yyyy-MM-dd")"
+                                data-fechafin="@item.FechaFin.ToString("yyyy-MM-dd")">
+                            <i class="fa fa-pencil"></i>
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="modal fade" id="modal_editar_licencia" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog " role="document">
+        <form id="frm_editar_licencia" asp-controller="Licencia" asp-action="Editar">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Editar licencia</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="validationServer01">Persona</label>
+                            <input id="e_idpersona" name="IdPersona" hidden />
+                            <input id="e_idlicenciapersona" name="IdLicenciaPersona" hidden />
+                            <input type="text" class="form-control" id="nombre_persona" value="Aloso Pacheco" readonly>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="validationServer02">Código Licencia</label>
+                            <input type="text" class="form-control" name="CodigoLicencia" id="e_codigolicencia" placeholder="Ingrese el código licencia" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="validationServer02">Fecha renovación</label>
+                            <input type="date" class="form-control" name="FechaRenovacion" id="e_fecharenovacion" placeholder="Ingrese la fecha de renovación" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="validationServer02">Fecha de expedición</label>
+                            <input type="date" class="form-control" name="FechaInicio" id="e_fechainicio" placeholder="Ingrese la fecha de expedición" required>
+                            <span id="val_editar_fecha_inicio" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12 mb-3">
+                            <label for="validationServer02">Fecha de vencimiento</label>
+                            <input type="date" class="form-control" name="FechaFin" id="e_fechafin" placeholder="Ingrese la fecha de vencimiento" required>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 <div class="modal fade" id="modal_crear_persona" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
@@ -186,6 +245,47 @@
                 numero_documento_persona = null;
             }
         });
+        $('.editar_licencia').on('click', function () {
+            var nombrepersona = $(this).attr("data-nombrepersona");
+            var idpersona = $(this).attr("data-idpersona");
+            var idlicenciapersona = $(this).attr("data-idlicenciapersona");
+            var codigolicencia = $(this).attr("data-codigolicencia");
+            var fecharenovacion = $(this).attr("data-fecharenovacion");
+            var fechainicio = $(this).attr("data-fechainicio");
+            var fechafin = $(this).attr("data-fechafin");
+            $("#nombre_persona").val(nombrepersona);
+            $("#e_idpersona").val(idpersona);
+            $("#e_idlicenciapersona").val(idlicenciapersona);
+            $("#e_codigolicencia").val(codigolicencia);
+            $("#e_fecharenovacion").val(fecharenovacion);
+            $("#e_fechainicio").val(fechainicio);
+            $("#e_fechafin").val(fechafin);
+        });
+
+        $("#frm_licencia").on("submit", function (e) {
+            var fecha_inicio = new Date($('#FechaInicio').val());
+            var fecha_fin = new Date($('#FechaFin').val());
+            fecha_inicio.setTime(fecha_inicio.getTime() + fecha_inicio.getTimezoneOffset() * 60 * 1000);
+            fecha_fin.setTime(fecha_fin.getTime() + fecha_fin.getTimezoneOffset() * 60 * 1000);
+
+            if (fecha_inicio > fecha_fin) {
+                $("#val_fecha_inicio").text("La fecha de expedición debe ser menor a la fecha de vencimiento")
+                e.preventDefault();
+            }
+        });
+
+        $("#frm_editar_licencia").on("submit", function (e) {
+            var fecha_inicio = new Date($('#e_fechainicio').val());
+            var fecha_fin = new Date($('#e_fechafin').val());
+            fecha_inicio.setTime(fecha_inicio.getTime() + fecha_inicio.getTimezoneOffset() * 60 * 1000);
+            fecha_fin.setTime(fecha_fin.getTime() + fecha_fin.getTimezoneOffset() * 60 * 1000);
+
+            if (fecha_inicio > fecha_fin) {
+                $("#val_editar_fecha_inicio").text("La fecha de expedición debe ser menor a la fecha de vencimiento")
+                e.preventDefault();
+            }
+        });
+
         var tipo = '@ViewBag.TipoMensaje';
         if (tipo == 'error') {
             toastr.error('@ViewBag.Mensaje');
@@ -198,6 +298,19 @@
                 $('#modal_personas').modal('hide');
             }
         });
+        function formatDate(date) {
+            var d = new Date(date),
+                month = '' + (d.getMonth() + 1),
+                day = '' + d.getDate(),
+                year = d.getFullYear();
+
+            if (month.length < 2) 
+                month = '0' + month;
+            if (day.length < 2) 
+                day = '0' + day;
+
+            return [year, day, month].join('-');
+        }
 
     </script>
 }

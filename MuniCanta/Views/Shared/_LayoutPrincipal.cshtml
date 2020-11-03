@@ -10,45 +10,62 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="~/toastr/toastr.min.css">
     @*<link rel="stylesheet" href="~/tab/style.css">*@
+    <link href="https://cdn.datatables.net/plug-ins/1.10.21/integration/font-awesome/dataTables.fontAwesome.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
 
+    <link href="https://cdn.datatables.net/1.10.22/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/fixedheader/3.1.7/css/fixedHeader.bootstrap4.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/responsive/2.2.6/css/responsive.bootstrap4.min.css" rel="stylesheet" />
+
     <style>
-        .container{
+
+        /*.container{
             padding-left: 55px !important;
             padding-right: 55px !important;
-        }
+        }*/
+
         .border-primary {
             border-color: #563D7C !important;
         }
+
         .text-primary {
             color: #563D7C !important;
         }
+
         .bg-primary {
             background-color: #563D7C !important;
         }
-        h3{
+
+        h3 {
             color: #563D7C;
         }
-        .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+
+        .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
             background-color: #563D7C !important;
         }
-        .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+
+        .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
             color: #563D7C;
         }
-        a{
+
+        a {
             color: #FFFFFF;
         }
-        .text-bold{
-            font-weight:bold;
+
+        .text-bold {
+            font-weight: bold;
         }
-        .nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+
+        .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
             background-color: #FFFFFF !important;
         }
-        .btn-morado{
+
+        .btn-morado {
             background-color: #563D7C;
             border-color: #563D7C;
             color: white
         }
+
         header, .full-width {
             width: 100%;
             background: #ccc;
@@ -62,7 +79,7 @@
             color: white;
             text-align: center
         }
-        /* label color */
+
         .input-field label {
             color: #000;
         }
@@ -70,6 +87,10 @@
         .cabeza input {
             color: #FFFFFF !important;
             font-weight: bold;
+        }
+
+        table.dataTable {
+            border-collapse: collapse !important;
         }
 
         .cabeza label {
@@ -81,12 +102,8 @@
         }
 
         th {
-            background-color: #28a745;
+            background-color: #563D7C;
             color: white;
-        }
-
-        tr.clicked {
-            background-color: #C3E6CB !important;
         }
 
         .select2-container--default .select2-selection--single {
@@ -127,22 +144,106 @@
             border-top-right-radius: 4px;
             color: white !important
         }
+
+        .table td, .table th {
+            padding: .63rem;
+        }
+
+        .page-item.active .page-link {
+            background-color: #563D7C;
+            border-color: #563D7C;
+        }
+
+        .page-link {
+            color: #563D7C;
+        }
     </style>
 </head>
 <body>
-
-    <div class="container body-content">
-        @RenderBody()
-    </div>
+    @RenderBody()
+    
 
     <!-- Compiled and minified JavaScript -->
     <script src="~/jquery/jquery-3.3.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+
+    <script src="https://cdn.datatables.net/1.10.22/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.22/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/fixedheader/3.1.7/js/dataTables.fixedHeader.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.6/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.6/js/responsive.bootstrap.min.js"></script>
     <script src="~/toastr/toastr.min.js"></script>
     <script>
-        $('.select2').select2();
+        //$(document).keypress(function (e) {
+        //    if (e.which == 13) {
+        //        e.preventDefault();
+        //    }
+        //});
+
+        $(document).ready(function () {
+            $('.select2').select2();
+            
+            var table = $('#tbl_licencias').DataTable({
+                responsive: true,
+                "order": [],
+                "language": {
+                        "decimal": ",",
+                        "thousands": ".",
+                        //"info": "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+                        //"infoEmpty": "Mostrando registros del 0 al 0 de un total de 0 registros",
+                        "info": "",
+                        "infoEmpty": "",
+                        "infoPostFix": "",
+                        "infoFiltered": "(filtrado de un total de _MAX_ registros)",
+                        "loadingRecords": "Cargando...",
+                        "lengthMenu": "Mostrar _MENU_ registros",
+                        "paginate": {
+                            "first": "Primero",
+                            "last": "Último",
+                            "next": "Siguiente",
+                            "previous": "Anterior"
+                        },
+                        "processing": "Procesando...",
+                        "search": "Buscar:",
+                        "searchPlaceholder": "Término de búsqueda",
+                        "zeroRecords": "No se encontraron resultados",
+                        "emptyTable": "Ningún dato disponible en esta tabla",
+                        "aria": {
+                            "sortAscending":  ": Activar para ordenar la columna de manera ascendente",
+                            "sortDescending": ": Activar para ordenar la columna de manera descendente"
+                        },
+                        //only works for built-in buttons, not for custom buttons
+                        "buttons": {
+                            "create": "Nuevo",
+                            "edit": "Cambiar",
+                            "remove": "Borrar",
+                            "copy": "Copiar",
+                            "csv": "fichero CSV",
+                            "excel": "tabla Excel",
+                            "pdf": "documento PDF",
+                            "print": "Imprimir",
+                            "colvis": "Visibilidad columnas",
+                            "collection": "Colección",
+                            "upload": "Seleccione fichero...."
+                        },
+                        "select": {
+                            "rows": {
+                                _: '%d filas seleccionadas',
+                                0: 'clic fila para seleccionar',
+                                1: 'una fila seleccionada'
+                            }
+                        }
+                    }   
+            });
+
+            new $.fn.dataTable.FixedHeader(table);
+            
+            
+        });
+
+
     </script>
     @RenderSection("Scripts", required: false)
 </body>

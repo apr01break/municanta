@@ -38,3 +38,46 @@ C:\Users\Alonso\source\repos\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\Razor\V
 C:\Users\Alonso\source\repos\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\Razor\Views\Usuario\Login.g.cshtml.cs
 C:\Users\Alonso\source\repos\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\Razor\Views\Licencia\Crear.g.cshtml.cs
 C:\Users\Alonso\source\repos\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\Razor\Views\Licencia\Consultar.g.cshtml.cs
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\MuniCanta.csprojAssemblyReference.cache
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\MuniCanta.RazorAssemblyInfo.cache
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\MuniCanta.RazorAssemblyInfo.cs
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\MuniCanta.AssemblyInfoInputs.cache
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\MuniCanta.AssemblyInfo.cs
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\MuniCanta.dll
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\MuniCanta.pdb
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\bin\Debug\netcoreapp2.1\appsettings.Development.json
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\bin\Debug\netcoreapp2.1\appsettings.json
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\bin\Debug\netcoreapp2.1\Properties\launchSettings.json
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\bin\Debug\netcoreapp2.1\MuniCanta.deps.json
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\bin\Debug\netcoreapp2.1\MuniCanta.runtimeconfig.json
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\bin\Debug\netcoreapp2.1\MuniCanta.runtimeconfig.dev.json
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\bin\Debug\netcoreapp2.1\MuniCanta.dll
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\bin\Debug\netcoreapp2.1\MuniCanta.pdb
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\bin\Debug\netcoreapp2.1\MuniCanta.Views.dll
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\bin\Debug\netcoreapp2.1\MuniCanta.Views.pdb
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\MuniCanta.TagHelpers.input.cache
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\MuniCanta.TagHelpers.output.cache
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\MuniCanta.RazorCoreGenerate.cache
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\Razor\Views\Home\About.cshtml.g.cs
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\Razor\Views\Home\Contact.cshtml.g.cs
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index - Copia (2).cshtml.g.cs
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index - Copia.cshtml.g.cs
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.cshtml.g.cs
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\Razor\Views\Home\Privacy.cshtml.g.cs
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\Razor\Views\Licencia\Consultar.cshtml.g.cs
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\Razor\Views\Licencia\Crear.cshtml.g.cs
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.cshtml.g.cs
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.cshtml.g.cs
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_LayoutLimpio.cshtml.g.cs
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_LayoutLogin.cshtml.g.cs
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_LayoutPrincipal.cshtml.g.cs
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\Razor\Views\Usuario\Login.cshtml.g.cs
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\Razor\Views\_ViewImports.cshtml.g.cs
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\Razor\Views\_ViewStart.cshtml.g.cs
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\MuniCanta.RazorTargetAssemblyInfo.cache
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\MuniCanta.RazorTargetAssemblyInfo.cs
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\MuniCanta.Views.pdb
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\MuniCanta.csproj.CopyComplete
+C:\Users\CPU_TI_008\3D Objects\MuniCanta\MuniCanta\obj\Debug\netcoreapp2.1\Razor\Views\Licencia\View.cshtml.g.cs

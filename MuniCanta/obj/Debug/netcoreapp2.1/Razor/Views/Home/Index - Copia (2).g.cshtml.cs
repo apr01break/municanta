@@ -67,7 +67,7 @@ using MuniCanta.ViewModels;
             WriteLiteral("    <div>\r\n        <br />\r\n        <br />\r\n        <div class=\"row\">\r\n            ");
             EndContext();
             BeginContext(158, 2448, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9542f0015f8b413fa9946f9453faa438", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "deafad84410d42aab85a362d1c6c6be7", async() => {
                 BeginContext(180, 2419, true);
                 WriteLiteral(@"
                 <div class=""row card-panel purple lighten-3"">

@@ -11,5 +11,8 @@ namespace MuniCanta.Interfaces
     {
         int RegistrarLicencia(PersonaLicencia personaLicencia);
         PersonaLicencia ConsultarLicencia(ConsultaLicenciaViewModel vm);
+        ICollection<LicenciaPersonaViewModel> ListarLicencias();
+
+        bool ValidarFechasLicencia(PersonaLicencia personaLicencia);
     }
 }

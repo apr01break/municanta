@@ -19,7 +19,7 @@ namespace MuniCanta.Controllers
         private readonly IPersonaRepository _personaRepository;
         private readonly ITipoDocumentoRepository _tipoDocumentoRepository;
         private readonly IHttpContextAccessor _contextAccessor;
-        public LicenciaController(ILicenciaRepository licenciaRepository, 
+        public LicenciaController(ILicenciaRepository licenciaRepository,
                                     IPersonaRepository personaRepository,
                                     ITipoDocumentoRepository tipoDocumentoRepository,
                                     IHttpContextAccessor contextAccessor)
@@ -34,12 +34,17 @@ namespace MuniCanta.Controllers
         {
             if (_contextAccessor.HttpContext.User.Identity.IsAuthenticated)
             {
+                ViewBag.TipoMensaje = TempData["TipoMensaje"];
+                ViewBag.Mensaje = TempData["Mensaje"];
+                TempData["TipoMensaje"] = null;
+                TempData["Mensaje"] = null;
                 ViewBag.ListaPersonas = new SelectList(_personaRepository.ListarPersonas(),
                                                 nameof(PersonaViewModel.IdPersona),
                                                 nameof(PersonaViewModel.TextoCompleto));
                 ViewBag.ListaTipoDocumento = new SelectList(_tipoDocumentoRepository.ListarTiposDeDocumento(),
                                                 nameof(TipoDocumento.IdTipoDocumento),
                                                 nameof(TipoDocumento.Descripcion));
+                ViewBag.Licencias = _licenciaRepository.ListarLicencias();
                 return View();
             }
             return RedirectToAction("Login", "Usuario");
@@ -50,22 +55,51 @@ namespace MuniCanta.Controllers
         {
             if (_contextAccessor.HttpContext.User.Identity.IsAuthenticated)
             {
-                var resultado = _licenciaRepository.RegistrarLicencia(personaLicencia);
-                if (resultado != 0)
+                if (_licenciaRepository.ValidarFechasLicencia(personaLicencia))
                 {
-                    ViewBag.TipoMensaje = "success";
-                    ViewBag.Mensaje = "Guardado correctamente";
-                    return View();
+                    personaLicencia.CodigoUsuario = _contextAccessor.HttpContext.User.Identity.Name;
+                    var resultado = _licenciaRepository.RegistrarLicencia(personaLicencia);
+                    if (resultado != 0)
+                    {
+                        TempData["TipoMensaje"] = "success";
+                        TempData["Mensaje"] = "Guardado correctamente";
+                        return RedirectToAction("Crear", "Licencia");
+                    }
+
+                    TempData["TipoMensaje"] = "error";
+                    TempData["Mensaje"] = "Ocurrió un error al guardar";
+                    return RedirectToAction("Crear", "Licencia");
                 }
-                ViewBag.TipoMensaje = "error";
-                ViewBag.Mensaje = "Ocurrió un error al guardar";
-                ViewBag.ListaPersonas = new SelectList(_personaRepository.ListarPersonas(),
-                                                nameof(PersonaViewModel.IdPersona),
-                                                nameof(PersonaViewModel.TextoCompleto));
-                ViewBag.ListaTipoDocumento = new SelectList(_tipoDocumentoRepository.ListarTiposDeDocumento(),
-                                                nameof(TipoDocumento.IdTipoDocumento),
-                                                nameof(TipoDocumento.Descripcion));
-                return View();
+                TempData["TipoMensaje"] = "error";
+                TempData["Mensaje"] = "Las fechas de expedicion y vencimientos estan registradas en otra licencia";
+                return RedirectToAction("Crear", "Licencia");
+            }
+            return RedirectToAction("Login", "Usuario");
+        }
+
+        [HttpPost]
+        public IActionResult Editar(PersonaLicencia personaLicencia)
+        {
+            if (_contextAccessor.HttpContext.User.Identity.IsAuthenticated)
+            {
+                if (_licenciaRepository.ValidarFechasLicencia(personaLicencia))
+                {
+                    personaLicencia.CodigoUsuario = _contextAccessor.HttpContext.User.Identity.Name;
+                    var resultado = _licenciaRepository.RegistrarLicencia(personaLicencia);
+                    if (resultado != 0)
+                    {
+                        TempData["TipoMensaje"] = "success";
+                        TempData["Mensaje"] = "Guardado correctamente";
+                        return RedirectToAction("Crear", "Licencia");
+                    }
+
+                    TempData["TipoMensaje"] = "error";
+                    TempData["Mensaje"] = "Ocurrió un error al guardar";
+                    return RedirectToAction("Crear", "Licencia");
+                }
+                TempData["TipoMensaje"] = "error";
+                TempData["Mensaje"] = "Las fechas de expedicion y vencimientos estan registradas en otra licencia";
+                return RedirectToAction("Crear", "Licencia");
             }
             return RedirectToAction("Login", "Usuario");
         }

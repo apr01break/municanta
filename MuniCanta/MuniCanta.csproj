@@ -11,12 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Views\Home\Index - Copia %282%29.cshtml">
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
-    <Content Update="Views\Home\Index - Copia.cshtml">
-      <Pack>$(IncludeRazorContentInPack)</Pack>
-    </Content>
     <Content Update="Views\Licencia\Consultar.cshtml">
       <Pack>$(IncludeRazorContentInPack)</Pack>
     </Content>
